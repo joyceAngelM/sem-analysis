@@ -1,0 +1,593 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600;700&display=swap");
+
+.landing {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 720px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 70% 40%, #19302e 0%, transparent 38%),
+    radial-gradient(circle at 15% 90%, #102320 0%, transparent 32%),
+    #050a0a;
+  color: #f4f7f5;
+  isolation: isolate;
+}
+
+.landing::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 7, 7, 0.92) 0%,
+    rgba(2, 7, 7, 0.68) 48%,
+    rgba(2, 7, 7, 0.35) 100%
+  );
+}
+
+/* ======================================================
+   MICROSCOPY BACKGROUND
+====================================================== */
+
+.microscope-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  overflow: hidden;
+  filter: contrast(1.08);
+}
+
+.microscope-bg::before {
+  content: "";
+  position: absolute;
+  width: 900px;
+  height: 900px;
+  right: -150px;
+  top: -120px;
+  border-radius: 50%;
+  background:
+    repeating-radial-gradient(
+      circle,
+      rgba(170, 210, 193, 0.08) 0 3px,
+      transparent 4px 35px
+    );
+  animation: rotateMicro 40s linear infinite;
+}
+
+.fibre {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid rgba(175, 217, 198, 0.18);
+  box-shadow:
+    inset 0 0 60px rgba(153, 220, 191, 0.06),
+    0 0 50px rgba(98, 201, 157, 0.04);
+  backdrop-filter: blur(2px);
+  animation: fibreFloat 12s ease-in-out infinite alternate;
+}
+
+.fibre::before {
+  content: "";
+  position: absolute;
+  inset: 12%;
+  border-radius: 50%;
+  border: 1px solid rgba(188, 220, 207, 0.08);
+}
+
+.fibre-1 {
+  width: 350px;
+  height: 350px;
+  right: 4%;
+  top: 13%;
+}
+
+.fibre-2 {
+  width: 210px;
+  height: 210px;
+  right: 28%;
+  top: 58%;
+  animation-delay: -3s;
+}
+
+.fibre-3 {
+  width: 130px;
+  height: 130px;
+  right: 18%;
+  top: 62%;
+  animation-delay: -7s;
+}
+
+.fibre-4 {
+  width: 100px;
+  height: 100px;
+  left: 47%;
+  top: 16%;
+  animation-delay: -5s;
+}
+
+.fibre-5 {
+  width: 520px;
+  height: 520px;
+  right: -260px;
+  bottom: -260px;
+  animation-delay: -9s;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #a8e3c8;
+  box-shadow: 0 0 15px #87dcb7;
+  opacity: 0.55;
+  animation: particleFloat 7s ease-in-out infinite;
+}
+
+.p1 { left: 53%; top: 28%; }
+.p2 { left: 68%; top: 15%; animation-delay: -2s; }
+.p3 { left: 82%; top: 52%; animation-delay: -4s; }
+.p4 { left: 58%; top: 74%; animation-delay: -1s; }
+.p5 { left: 91%; top: 31%; animation-delay: -5s; }
+.p6 { left: 75%; top: 81%; animation-delay: -3s; }
+
+.scan-line {
+  position: absolute;
+  left: 46%;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(117, 231, 184, 0.5),
+    transparent
+  );
+  box-shadow: 0 0 14px rgba(117, 231, 184, 0.25);
+  animation: scan 7s linear infinite;
+}
+
+.noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      #fff 3px
+    );
+  pointer-events: none;
+}
+
+/* ======================================================
+   NAVIGATION
+====================================================== */
+
+.topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 34px 55px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.brand-mark {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #7fe0b6;
+  border-radius: 50%;
+  position: relative;
+}
+
+.brand-mark::before,
+.brand-mark::after {
+  content: "";
+  position: absolute;
+  background: #7fe0b6;
+}
+
+.brand-mark::before {
+  width: 1px;
+  height: 42px;
+  top: -7px;
+  left: 14px;
+}
+
+.brand-mark::after {
+  height: 1px;
+  width: 42px;
+  left: -7px;
+  top: 14px;
+}
+
+.brand strong {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+}
+
+.brand small {
+  display: block;
+  color: #70817b;
+  font-size: 7px;
+  margin-top: 4px;
+  letter-spacing: 0.25em;
+}
+
+.system-status {
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: #90a39b;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #72e8b5;
+  box-shadow: 0 0 10px #72e8b5;
+  animation: pulse 1.8s infinite;
+}
+
+/* ======================================================
+   HERO
+====================================================== */
+
+.hero {
+  position: absolute;
+  top: 50%;
+  left: 9%;
+  transform: translateY(-53%);
+  max-width: 690px;
+  animation: heroReveal 1.2s ease both;
+}
+
+.eyebrow {
+  color: #79dbae;
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  margin-bottom: 25px;
+}
+
+.hero h1 {
+  margin: 0;
+  max-width: 680px;
+  font-size: clamp(58px, 6vw, 95px);
+  font-weight: 300;
+  line-height: 0.94;
+  letter-spacing: -0.055em;
+}
+
+.hero h1 span {
+  display: block;
+  color: #86d9b7;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.hero-description {
+  max-width: 610px;
+  margin: 30px 0 24px;
+  color: #9aaba4;
+  font-size: 14px;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+.tech-row {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  font-family: "DM Mono", monospace;
+  color: #6f827a;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  margin-bottom: 34px;
+}
+
+.tech-row i {
+  width: 3px;
+  height: 3px;
+  background: #5e756b;
+  border-radius: 50%;
+}
+
+.enter-button {
+  height: 58px;
+  padding: 0 7px 0 24px;
+  border: 1px solid rgba(126, 223, 182, 0.38);
+  background: rgba(103, 207, 163, 0.06);
+  color: #eaf6f1;
+  display: inline-flex;
+  align-items: center;
+  gap: 34px;
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  cursor: pointer;
+  transition: 0.35s ease;
+  backdrop-filter: blur(12px);
+}
+
+.enter-button b {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  background: #80ddb6;
+  color: #07100d;
+  font-size: 20px;
+  font-weight: 400;
+  transition: transform 0.35s ease;
+}
+
+.enter-button:hover {
+  background: rgba(103, 207, 163, 0.14);
+  border-color: #7fe0b6;
+  box-shadow: 0 0 40px rgba(102, 220, 170, 0.08);
+}
+
+.enter-button:hover b {
+  transform: translateX(3px);
+}
+
+/* ======================================================
+   PERFORMANCE PANEL
+====================================================== */
+
+.performance-panel {
+  position: absolute;
+  right: 5%;
+  bottom: 10%;
+  width: 540px;
+  padding: 22px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(157, 199, 181, 0.14);
+  border-bottom: 1px solid rgba(157, 199, 181, 0.14);
+  background: rgba(6, 14, 13, 0.35);
+  backdrop-filter: blur(10px);
+}
+
+.metric span,
+.metric small {
+  display: block;
+  font-family: "DM Mono", monospace;
+}
+
+.metric span {
+  color: #6c8077;
+  font-size: 7px;
+  letter-spacing: 0.14em;
+}
+
+.metric strong {
+  display: block;
+  margin: 5px 0;
+  font-size: 23px;
+  font-weight: 400;
+}
+
+.metric strong sup {
+  color: #7bd8b0;
+  font-size: 10px;
+}
+
+.metric small {
+  color: #65736d;
+  font-size: 7px;
+}
+
+.divider {
+  width: 1px;
+  height: 42px;
+  background: rgba(157, 199, 181, 0.12);
+}
+
+/* ======================================================
+   HUD + DETAILS
+====================================================== */
+
+.hud {
+  position: absolute;
+  font-family: "DM Mono", monospace;
+  color: #63756e;
+  font-size: 8px;
+  letter-spacing: 0.15em;
+}
+
+.hud-left {
+  left: 55px;
+  bottom: 90px;
+}
+
+.hud-left span {
+  color: #86d9b7;
+}
+
+.hud-left div {
+  width: 60px;
+  height: 1px;
+  background: #42574f;
+  margin: 7px 0;
+}
+
+.hud-right {
+  right: 55px;
+  top: 120px;
+  text-align: right;
+}
+
+.hud-right span {
+  display: block;
+  color: #72e8b5;
+  margin-top: 5px;
+}
+
+.corner {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  opacity: 0.25;
+}
+
+.corner-tl {
+  top: 90px;
+  left: 35px;
+  border-top: 1px solid #9ad9bf;
+  border-left: 1px solid #9ad9bf;
+}
+
+.corner-tr {
+  top: 90px;
+  right: 35px;
+  border-top: 1px solid #9ad9bf;
+  border-right: 1px solid #9ad9bf;
+}
+
+.corner-bl {
+  bottom: 50px;
+  left: 35px;
+  border-bottom: 1px solid #9ad9bf;
+  border-left: 1px solid #9ad9bf;
+}
+
+.corner-br {
+  bottom: 50px;
+  right: 35px;
+  border-bottom: 1px solid #9ad9bf;
+  border-right: 1px solid #9ad9bf;
+}
+
+footer {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "DM Mono", monospace;
+  color: #43534d;
+  font-size: 7px;
+  letter-spacing: 0.18em;
+  white-space: nowrap;
+}
+
+footer span {
+  margin: 0 12px;
+  color: #71bd9c;
+}
+
+/* ======================================================
+   ANIMATION
+====================================================== */
+
+@keyframes fibreFloat {
+  from {
+    transform: translate3d(-10px, -8px, 0) scale(0.96);
+  }
+  to {
+    transform: translate3d(18px, 15px, 0) scale(1.05);
+  }
+}
+
+@keyframes rotateMicro {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.25;
+  }
+  50% {
+    transform: translateY(-35px);
+    opacity: 0.8;
+  }
+}
+
+@keyframes scan {
+  from {
+    top: 8%;
+  }
+  to {
+    top: 95%;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes heroReveal {
+  from {
+    opacity: 0;
+    transform: translateY(-47%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-53%);
+  }
+}
+
+@media (max-width: 1000px) {
+  .performance-panel {
+    display: none;
+  }
+
+  .hero {
+    left: 7%;
+    right: 7%;
+  }
+
+  .hero h1 {
+    font-size: clamp(52px, 12vw, 80px);
+  }
+}
+
+@media (max-width: 600px) {
+  .topbar {
+    padding: 25px;
+  }
+
+  .system-status,
+  .hud,
+  .corner {
+    display: none;
+  }
+
+  .hero {
+    left: 25px;
+    right: 25px;
+  }
+
+  .hero h1 {
+    font-size: 53px;
+  }
+
+  footer {
+    font-size: 6px;
+  }
+}
